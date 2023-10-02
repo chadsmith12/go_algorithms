@@ -25,3 +25,14 @@ func Test_LinearSearchReturnsFalse(t *testing.T) {
 		t.Fatalf(`12 was round inside of %v. Should return false.`, items)
 	}
 }
+
+func Test_BinarySearchReturnsTrue(t *testing.T) {
+	items := [4]int{1, 5, 13, 14}
+	toFind := 1
+
+	found := BinarySearch(items[:], toFind)
+
+	if !found {
+		t.Fatalf(`"1" was not found inside of %v. Should return true.`, items)
+	}
+}

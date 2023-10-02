@@ -9,3 +9,23 @@ func LinearSearch(haystack []int, needle int) bool {
 
 	return false
 }
+
+func BinarySearch(haystack []int, needle int) bool {
+	low := 0
+	high := len(haystack)
+
+	for low < high {
+		midPoint := low + (high-low)/2
+		value := haystack[midPoint]
+
+		if value == needle {
+			return true
+		} else if value > needle {
+			high = midPoint
+		} else {
+			low = midPoint + 1
+		}
+	}
+
+	return false
+}
