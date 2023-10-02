@@ -17,3 +17,10 @@ Arrays have a few specific operations that they can do, though it's important to
 Deleting is not really a full deletion and is more just a "set." You set the value to something that signifies that it is deleted to you.
 
 All these operations are a `O(1)`.
+
+---
+
+### Searching Algorithms
+
+* Linear Search - This is the most basic searching algorithm that searches the array for a certain value and tells you if the items is inside of the array. This algorithm will linearly search this array until it finds the item and return that it found it. If it can not find the item then it will return back that the item was not found in the array. Because we are searching the array linearly we have to do that n times, so therefore the algorithm is `O(n)`.
+
