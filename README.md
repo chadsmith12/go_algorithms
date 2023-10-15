@@ -4,3 +4,9 @@ This repository goes through [The Last Algorithms Course You'll Need](https://fr
 
 This is to help learn Go. Some of the data structures and algorithms might already be implemented in the Go standard library but will be implemented in a simple manner just to learn. They are not implemented to attempt to replace or be better than the current standard library.
 
+---
+
+## Table Of Contents
+
+1. [Arrays and Searhcing](./arrays/) - Provides basic ideas of searching arrays (shows basic searing slices in Go)
+2. [Sorting](./sorting/) - Provides basic sorting algorithms written in Go.
