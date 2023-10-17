@@ -4,10 +4,10 @@ import (
 	"testing"
 )
 
-func Test_QuickSortSorts(t *testing.T) {
+func Test_BubbleSortSorts(t *testing.T) {
 	values := []int{2, 4, 1, 10, 7}
 	wanted := []int{1, 2, 4, 7, 10}
-	QuickSort(values)
+	BubbleSort(values)
 
 	if !equal(values, wanted) {
 		t.Fatalf("Slice was not sorted. Wanted = %v Got = %v", wanted, values)

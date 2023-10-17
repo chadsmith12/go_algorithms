@@ -1,6 +1,6 @@
 package sorting
 
-func QuickSort(values []int) {
+func BubbleSort(values []int) {
 	for i := 0; i < len(values); i++ {
 		for j := 0; j < len(values)-1-i; j++ {
 			currentValue := values[j]
