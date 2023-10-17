@@ -1,6 +1,10 @@
 package queue
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+	"strings"
+)
 
 var EmptyQueueError = errors.New("Queue is empty")
 
@@ -19,6 +23,26 @@ func Init[T any]() *Queue[T] {
 	q := &Queue[T]{length: 0, head: nil, tail: nil}
 
 	return q
+}
+
+func (q *Queue[T]) String() string {
+	if q.length == 0 {
+		return "[]"
+	}
+
+	var builder strings.Builder
+	currentNode := q.head
+	builder.WriteByte('[')
+	for currentNode != nil {
+		fmt.Fprintf(&builder, "%v", currentNode.value)
+		if currentNode.next != nil {
+			builder.WriteByte(' ')
+		}
+		currentNode = currentNode.next
+	}
+	builder.WriteByte(']')
+
+	return builder.String()
 }
 
 func (q *Queue[T]) Enqueue(item T) {
