@@ -30,6 +30,7 @@ func (s *Stack[T]) String() string {
 	}
 
 	builder := strings.Builder{}
+	builder.WriteByte('[')
 	currentNode := s.head
 	for currentNode != nil {
 		fmt.Fprintf(&builder, "%v", currentNode.value)
