@@ -12,3 +12,4 @@ This is to help learn Go. Some of the data structures and algorithms might alrea
 2. [Sorting](./sorting/) - Provides basic sorting algorithms written in Go.
 3. [Queue](./queues/) - Provides a basic Queue implementation written in Go.
 4. [Stack](./stack/) - Provides a basic Stack implementation written in Go.
+5. [Maze Solver] (./maze_solver/) - Provides a basic implementaion of solving a maze in Go.
