@@ -1,4 +1,6 @@
-# Bubble Sort
+# Sorting
+
+## Bubble Sort
 
 Lets say we have the following array: 
 
@@ -75,3 +77,31 @@ First time we will do `N` checks. The next time through we don't have to check t
 `(N + 1)N/2` = Sum of numbers over an arrange.
 
 `O(N^2 + N) = O(N^2)`
+
+---
+
+## QuickSort
+
+QuickSort uses a Divide and Conqure algorithm.
+
+We will pick some element out of an array, we will call it `p`. In this case, we will pick the last element of the array. Anything that is smaller or equal to the pivot will be on one side of the array, and everything that is larger than the pivot on the other side of it. 
+
+You will split the array, not including the pivot, and break it down into two arrays and repeat the operation on the two arrays.
+
+### Example:
+
+We have an array that is 32 elements large, 0-31. We pick a pivot in the middle so `p` is 16. We break this down so we have two sub arrays. This will be: 0-15 and 17-31. Note we don't include the pivot.
+
+The pivot on the first half will then be 8. Going down this half if we keep breaking it down you will then have 1-7 and 9-15.
+
+Breaking it down further, you have 1-7, a pivot of 4, and 9-15 with a pivot of 12.
+
+Breaking it down furthe, you have 1-3, a pivot of 2. this breaks down to only one element. At this point when you are at the bottom part, all of the pieces are now sorted.
+
+## Running Time
+
+You scan each input at least once. Every break down you go down each input. So you're down `N` operations until `N=1`, which will give us the equation: `n/2^k = 1`. This ends up equaling `logn`. So therefor the running for this would be `O(nlogn)` amount of times.  You will do `logn` operations `n` times.
+
+Though there is a catch that if your array is reverse sorted and you ended up picking the pivot of the smallest element, it could end up being `O(n^2)`. There is a strategy to help with this and a simple strategy is just pick the middle element. So there is a chance to pick the worst condition, though the chances quite low.
+
+

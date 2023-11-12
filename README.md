@@ -9,7 +9,8 @@ This is to help learn Go. Some of the data structures and algorithms might alrea
 ## Table Of Contents
 
 1. [Arrays and Searhcing](./arrays/) - Provides basic ideas of searching arrays (shows basic searing slices in Go)
-2. [Sorting](./sorting/) - Provides basic sorting algorithms written in Go.
+2. [Sorting](./sorting/) - Provides basic sorting algorithms written in Go (includes Bubble Sort and Quick Sort).
 3. [Queue](./queues/) - Provides a basic Queue implementation written in Go.
 4. [Stack](./stack/) - Provides a basic Stack implementation written in Go.
 5. [Maze Solver] (./maze_solver/) - Provides a basic implementaion of solving a maze in Go.
+

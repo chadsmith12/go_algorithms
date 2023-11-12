@@ -8,9 +8,19 @@ func Test_BubbleSortSorts(t *testing.T) {
 	values := []int{2, 4, 1, 10, 7}
 	wanted := []int{1, 2, 4, 7, 10}
 	BubbleSort(values)
-
 	if !equal(values, wanted) {
 		t.Fatalf("Slice was not sorted. Wanted = %v Got = %v", wanted, values)
+	}
+}
+
+func Test_QuickSortSorts(t *testing.T) {
+	values := []int{2, 4, 1, 10, 7}
+	wanted := []int{1, 2, 4, 7, 10}
+
+	QuickSort(values)
+
+	if !equal(values, wanted) {
+		t.Fatalf("Slice was not sorted. Wanted %v Got %v", wanted, values)
 	}
 }
 
