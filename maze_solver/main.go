@@ -73,7 +73,7 @@ func maze_solver(maze []string, wall byte, start, end Point) *arraylist.ArrayLis
 }
 
 func main() {
-	maze := []string{
+	mazeData := []string{
 		"xxxxxxxxxx x",
 		"x        x x",
 		"x        x x",
@@ -84,7 +84,7 @@ func main() {
 
 	start := Point{x: 10, y: 0}
 	end := Point{x: 1, y: 5}
-	path := maze_solver(maze, 'x', start, end)
+	path := maze_solver(mazeData, 'x', start, end)
 
 	fmt.Println(path)
 }
