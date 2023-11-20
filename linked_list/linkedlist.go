@@ -1,6 +1,8 @@
 package linkedlist
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type node[T any] struct {
 	value T
@@ -65,7 +67,7 @@ func (l *LinkedList[T]) InsertAt(item T, index int) error {
 	}
 
 	foundNode := l.head
-	for i := index; i < index; i++ {
+	for i := 0; i < index; i++ {
 		foundNode = foundNode.next
 	}
 
@@ -94,8 +96,57 @@ func (l *LinkedList[T]) Append(item T) {
 	l.tail = node
 }
 
-func (l *LinkedList[T]) RemoveItem(item T, compareFunc func(a, b T) bool) {
+func (l *LinkedList[T]) RemoveAt(index int) error {
+	if index >= l.length {
+		return newIndexOutOfRangeError(index)
+	}
 
+	if index == 0 && l.length == 1 {
+		l.head = nil
+		l.tail = nil
+		l.length = 0
+		return nil
+	}
+
+	l.length--
+	found := l.findAt(index)
+	if found.prev != nil {
+		found.prev.next = found.next
+	}
+	if found.next != nil {
+		found.next.prev = found.prev
+	}
+	if found == l.head {
+		l.head = found.next
+	}
+	if found == l.tail {
+		l.tail = found.prev
+	}
+
+	found.next = nil
+	found.prev = nil
+
+	return nil
+
+}
+
+func (l *LinkedList[T]) FindAt(index int) (T, error) {
+	var zeroValue T
+	if index >= l.length {
+		return zeroValue, newIndexOutOfRangeError(index)
+	}
+
+	found := l.findAt(index)
+	return found.value, nil
+}
+
+func (l *LinkedList[T]) findAt(index int) *node[T] {
+	foundNode := l.head
+	for i := 0; i < index; i++ {
+		foundNode = foundNode.next
+	}
+
+	return foundNode
 }
 
 // Structure that represents an error for when the index is out of range.
