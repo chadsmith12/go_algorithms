@@ -32,8 +32,14 @@ There are different ways to traverse a tree. They really just depend on when you
 * In Order - You first recurse all the way down the left side, Visit the node, and then you will recurse all the way down the right side. Root will be in the middle.
 * Post Order - You first recurse both the left and right side, then visit the node. Root will be at the end.
 
+When doing these traversals we are doing a Depth First Search.
+
 ## Running Time
 
 The input is the size of the tree. There are N Nodes. The traversal would be `O(N)`.
+
+## Breadth-First Seach
+
+A Breadth-First Search works the opposite of a Depth First Search. When you use a DFS and using recurrsion you will notice that you are implicitly using a stack. When you start using a BFS the opposite happens and now you are going to be using a Queue.
 
 

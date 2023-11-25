@@ -65,3 +65,16 @@ func TestPostOrderTraversal(t *testing.T) {
 
 	testSliceSame(expected, actual, t)
 }
+
+func TestBFS(t *testing.T) {
+	tree := makeTree()
+	found := bfs[int](tree, 4)
+	if !found {
+		t.Fatalf("failed to find 4. Wanted true, actual false")
+	}
+
+	found = bfs[int](tree, 42)
+	if found {
+		t.Fatalf("searching for 42 returned true. Wanted false, actual true")
+	}
+}

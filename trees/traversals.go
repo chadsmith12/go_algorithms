@@ -1,19 +1,19 @@
 package main
 
-type binarynode[T any] struct {
+type binarynode[T comparable] struct {
 	value T
 	left  *binarynode[T]
 	right *binarynode[T]
 }
 
-func preOrderSearch[T any](head *binarynode[T]) []T {
+func preOrderSearch[T comparable](head *binarynode[T]) []T {
 	path := make([]T, 0)
 	path = walkPreOrder[T](head, path)
 
 	return path
 }
 
-func walkPreOrder[T any](head *binarynode[T], path []T) []T {
+func walkPreOrder[T comparable](head *binarynode[T], path []T) []T {
 	if head == nil {
 		return path
 	}
@@ -25,14 +25,14 @@ func walkPreOrder[T any](head *binarynode[T], path []T) []T {
 	return path
 }
 
-func inOrderSearch[T any](head *binarynode[T]) []T {
+func inOrderSearch[T comparable](head *binarynode[T]) []T {
 	path := make([]T, 0)
 	path = walkInOrder[T](head, path)
 
 	return path
 }
 
-func walkInOrder[T any](head *binarynode[T], path []T) []T {
+func walkInOrder[T comparable](head *binarynode[T], path []T) []T {
 	if head == nil {
 		return path
 	}
@@ -44,14 +44,14 @@ func walkInOrder[T any](head *binarynode[T], path []T) []T {
 	return path
 }
 
-func postOrderSearch[T any](head *binarynode[T]) []T {
+func postOrderSearch[T comparable](head *binarynode[T]) []T {
 	path := make([]T, 0)
 	path = walkPostOrder[T](head, path)
 
 	return path
 }
 
-func walkPostOrder[T any](head *binarynode[T], path []T) []T {
+func walkPostOrder[T comparable](head *binarynode[T], path []T) []T {
 	if head == nil {
 		return path
 	}
