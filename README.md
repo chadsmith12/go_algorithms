@@ -13,4 +13,5 @@ This is to help learn Go. Some of the data structures and algorithms might alrea
 3. [Queue](./queues/) - Provides a basic Queue implementation written in Go.
 4. [Stack](./stack/) - Provides a basic Stack implementation written in Go.
 5. [Maze Solver] (./maze_solver/) - Provides a basic implementaion of solving a maze in Go.
-
+6. [Linked List](./linked_list) - Proved a basic doubly linked list implementation in Go.
+7. [Trees](./trees) - Provides notes and basic implementation of different trees in Go.

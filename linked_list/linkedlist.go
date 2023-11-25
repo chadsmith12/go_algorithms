@@ -66,10 +66,7 @@ func (l *LinkedList[T]) InsertAt(item T, index int) error {
 		l.Append(item)
 	}
 
-	foundNode := l.head
-	for i := 0; i < index; i++ {
-		foundNode = foundNode.next
-	}
+	foundNode := l.findAt(index)
 
 	node := newNode[T](item)
 	l.length++
