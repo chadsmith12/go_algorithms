@@ -42,4 +42,4 @@ The input is the size of the tree. There are N Nodes. The traversal would be `O(
 
 A Breadth-First Search works the opposite of a Depth First Search. When you use a DFS and using recurrsion you will notice that you are implicitly using a stack. When you start using a BFS the opposite happens and now you are going to be using a Queue.
 
-
+It's important to note that Depth First Search will preserve shape, while a BFS will not preserve shape. So if you were to compare that two binary trees are in-fact the same in contents and shape, then you would want to use a DFS.

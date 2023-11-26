@@ -42,6 +42,34 @@ func makeTree() *binarynode[int] {
 	return head
 }
 
+func makeTwoSameTrees() (*binarynode[int], *binarynode[int]) {
+	return makeTree(), makeTree()
+}
+
+func makeTwoTreesDifferentStructures() (*binarynode[int], *binarynode[int]) {
+	tree1 := &binarynode[int]{
+		value: 1,
+		left: &binarynode[int]{
+			value: 2,
+			left: &binarynode[int]{
+				value: 3,
+			},
+		},
+	}
+
+	tree2 := &binarynode[int]{
+		value: 1,
+		left: &binarynode[int]{
+			value: 2,
+		},
+		right: &binarynode[int]{
+			value: 3,
+		},
+	}
+
+	return tree1, tree2
+}
+
 func TestPreOrderTraversal(t *testing.T) {
 	tree := makeTree()
 	expected := []int{1, 2, 3, 4, 5, 6, 7}
@@ -76,5 +104,21 @@ func TestBFS(t *testing.T) {
 	found = bfs[int](tree, 42)
 	if found {
 		t.Fatalf("searching for 42 returned true. Wanted false, actual true")
+	}
+}
+
+func TestCompareBinaryTrees(t *testing.T) {
+	a, b := makeTwoSameTrees()
+	isSame := compare[int](a, b)
+
+	if !isSame {
+		t.Fatal("compare(a, b) same trees is false, wanted true")
+	}
+
+	a, b = makeTwoTreesDifferentStructures()
+	isSame = compare[int](a, b)
+
+	if isSame {
+		t.Fatal("compare(a, b) different tree structure is false, wanted true")
 	}
 }
