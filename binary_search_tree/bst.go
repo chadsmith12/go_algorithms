@@ -89,16 +89,21 @@ func (t *BinarySearchTree[T]) insert(node *BinaryNode[T], value T) {
 
 // Uses DFS to attempt to find the value inside the BST
 func (t *BinarySearchTree[T]) Find(value T) bool {
+	node := t.find(t.root, value)
+	return node != nil
+}
+
+func (t *BinarySearchTree[T]) findNode(value T) *BinaryNode[T] {
 	return t.find(t.root, value)
 }
 
-func (t *BinarySearchTree[T]) find(node *BinaryNode[T], value T) bool {
+func (t *BinarySearchTree[T]) find(node *BinaryNode[T], value T) *BinaryNode[T] {
 	if node == nil {
-		return false
+		return nil
 	}
 
 	if t.isEqual(node.value, value) {
-		return true
+		return node
 	}
 
 	isGreater := t.isGreaterThan(value, node.value)
