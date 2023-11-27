@@ -16,6 +16,15 @@ func newBinaryNode[T any](value T, parent *BinaryNode[T]) *BinaryNode[T] {
 	}
 }
 
+func findMin[T any](n *BinaryNode[T]) *BinaryNode[T] {
+	current := n
+	for current.left != nil {
+		current = current.left
+	}
+
+	return current
+}
+
 type BinarySearchTree[T any] struct {
 	root       *BinaryNode[T]
 	lenth      int
@@ -28,6 +37,10 @@ func (t *BinarySearchTree[T]) isEqual(left, right T) bool {
 
 func (t *BinarySearchTree[T]) isGreaterThan(left, right T) bool {
 	return t.comparator(left, right) > 0
+}
+
+func (t *BinarySearchTree[T]) isLessThan(left, right T) bool {
+	return t.comparator(left, right) < 0
 }
 
 func NewBST[T any](c Comparator[T]) *BinarySearchTree[T] {
@@ -114,44 +127,51 @@ func (t *BinarySearchTree[T]) find(node *BinaryNode[T], value T) *BinaryNode[T] 
 	return t.find(node.left, value)
 }
 
-func (t *BinarySearchTree[T]) Delete(value T) bool {
-	return t.delete(nil, t.root, value)
+func (t *BinarySearchTree[T]) Delete(value T) {
+	t.deleteNode(t.root, value)
 }
 
-func (t *BinarySearchTree[T]) delete(parent, node *BinaryNode[T], value T) bool {
+func (t *BinarySearchTree[T]) deleteNode(node *BinaryNode[T], value T) *BinaryNode[T] {
 	if node == nil {
-		return false
+		return nil
 	}
 
-	if t.isEqual(node.value, value) {
-		t.deleteNode(parent, node)
-		return true
+	if t.isLessThan(value, node.value) {
+		node.left = t.deleteNode(node.left, value)
+		return node
 	}
-
 	if t.isGreaterThan(value, node.value) {
-		return t.delete(node, node.right, value)
+		node.right = t.deleteNode(node.right, value)
+		return node
 	}
 
-	return t.delete(node, node.left, value)
+	t.lenth--
+	return t.delete(node, value)
 }
 
-func (t *BinarySearchTree[T]) deleteNode(parent, node *BinaryNode[T]) {
+func (t *BinarySearchTree[T]) delete(node *BinaryNode[T], value T) *BinaryNode[T] {
 	if node.left == nil && node.right == nil {
+		if node == t.root {
+			t.root = nil
+		}
 		node = nil
-		return
+		return nil
 	}
 
 	if node.left == nil {
-		if node.parent == nil {
-			t.root = node.right
-			return
-		}
-		return
+		node = node.right
+		return node
 	}
+
 	if node.right == nil {
-		if node.parent == nil {
-			t.root = node.left
-			return
-		}
+		node = node.left
+		return node
 	}
+
+	temp := findMin(node.right)
+	node.value = temp.value
+	node.right = t.delete(node.right, node.value)
+
+	return node
+
 }

@@ -15,7 +15,6 @@ func TestInsertingBST(t *testing.T) {
 	if tree.root != nil {
 		t.Fatalf("newly initialized tree is not empty. root is %v", tree.root.value)
 	}
-
 	tree.Insert(50)
 	if tree.root == nil {
 		t.Fatal("root is nil after inserting first node, expected 50")
@@ -75,4 +74,45 @@ func TestFind(t *testing.T) {
 	if actual != expected {
 		t.Fatal("tree.Find(420) expected to return false, got true")
 	}
+}
+
+func TestDelete(t *testing.T) {
+	tree := NewBST[int](IntComparator)
+	tree.Insert(50)
+	tree.Insert(25)
+	tree.Insert(75)
+	tree.Insert(95)
+	tree.Insert(15)
+
+	// delete leaf node
+	tree.Delete(15)
+	order := tree.InorderSlice()
+	if slices.Contains(order, 15) {
+		t.Fatal("15 is still inside the tree, when it should be deleted")
+	}
+	t.Logf("Currently after deleting 15: %v\n", order)
+
+	// delete node with 1 child
+	tree.Delete(75)
+	order = tree.InorderSlice()
+	if slices.Contains(order, 75) {
+		t.Fatal("75 is still inside the tree, when it should be deleted")
+	}
+	t.Logf("Currently after deleting 75: %v\n", order)
+
+	// delete node with 2 children
+	tree.Delete(50)
+	order = tree.InorderSlice()
+	if slices.Contains(order, 50) {
+		t.Fatal("50 is still finish inside the tree, when it should be deleted")
+	}
+
+	t.Logf("Currently after deleting 50: %v\n", order)
+	tree.Delete(25)
+	tree.Delete(95)
+	if tree.lenth != 0 {
+		t.Fatalf("Tree is not empty. Should be empty. Got %d", tree.lenth)
+	}
+	order = tree.InorderSlice()
+	t.Logf("Tree after deleting all nodes: %v\n", order)
 }
