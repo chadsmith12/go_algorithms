@@ -16,3 +16,4 @@ This is to help learn Go. Some of the data structures and algorithms might alrea
 6. [Linked List](./linked_list) - Proved a basic doubly linked list implementation in Go.
 7. [Trees](./trees) - Provides notes and basic implementation of different trees in Go.
 8. [Priority Queue - MinHeap](./priority_queue) - Prvides notes and basic implementation of a MinHeap Priority Queue in Go.
+9. [Tries/Autocomplete](./tries) - Builds out a basic autocompletition to demonstrate the use of Tries in Go.

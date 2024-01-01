@@ -27,7 +27,7 @@ func assertDeletedItem(expected, actual int, t *testing.T) {
 }
 
 func TestMinHeap(t *testing.T) {
-	heap := New[int](0, 0)
+	heap := New[int](0)
 	assertLen(heap, 0, t)
 
 	heap.Append(10)

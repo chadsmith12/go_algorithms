@@ -10,9 +10,9 @@ type MinHeap[T constraints.Ordered] struct {
 	data []T
 }
 
-func New[T constraints.Ordered](length, compacity int) *MinHeap[T] {
+func New[T constraints.Ordered](capacity int) *MinHeap[T] {
 	return &MinHeap[T]{
-		data: make([]T, length, compacity),
+		data: make([]T, 0, capacity),
 	}
 }
 
